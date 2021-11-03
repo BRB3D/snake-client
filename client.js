@@ -13,11 +13,21 @@ const connect = function() {
   conn.on('connect', () => {//at connection it sends name
     conn.write(`Name: ${name}`);
   });
+ 
+  conn.on('connect', () => {//at connection it sends name
+    conn.write(`Move: up`);
+  });
   conn.on('data', (data) => {//event listener for data received from server
     console.log(`Servers says : ${data}`);
   });
   return conn;
 };
 
+
+// legal moves of the game.
+/* "Move: up" - move up one square (unless facing down)
+"Move: down" - move down one square (unless facing up)
+"Move: left" - move left one square (unless facing right)
+"Move: right" - move left one square (unless facing left) */
 
 module.exports = {connect };
