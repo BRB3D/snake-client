@@ -27,6 +27,9 @@ const handleUserInput = function(key) {//first key is the exit key. otherwise th
   if (key === 's') {
     connection.write("Move: down");
   }
+  if(key === 'q') {
+    connection.write('Say: we are the champions');
+  }
 };
 
 

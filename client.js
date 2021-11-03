@@ -13,10 +13,10 @@ const connect = function() {
   conn.on('connect', () => {//at connection it sends name
     conn.write(`Name: ${name}`);
   });
- 
-  conn.on('connect', () => {//at connection it sends name
+  //not used anymore but kept here becasue it serves as a check to see if the game is working.
+  /*  conn.on('connect', () => {//at connection it sends name
     conn.write(`Move: up`);
-  });
+  }); */
   conn.on('data', (data) => {//event listener for data received from server
     console.log(`Servers says : ${data}`);
   });
