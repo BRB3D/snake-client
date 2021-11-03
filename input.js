@@ -1,4 +1,5 @@
 const { connect } = require("http2");
+const { keybindings } = require("./constants");
 let connection;
 const setupInput = function(conn) {//sets up the input for the user to be able to play.
   connection = conn;
@@ -15,20 +16,8 @@ const handleUserInput = function(key) {//first key is the exit key. otherwise th
   if (key === '\u0003') {
     process.exit();
   }
-  if (key === 'w') {
-    connection.write("Move: up");
-  }
-  if (key === 'a') {
-    connection.write("Move: left");
-  }
-  if (key === 'd') {
-    connection.write("Move: right");
-  }
-  if (key === 's') {
-    connection.write("Move: down");
-  }
-  if(key === 'q') {
-    connection.write('Say: we are the champions');
+  if (key in keybindings) {
+    connection.write(keybindings[key]);
   }
 };
 
